@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <div class="header-row">
+        <span>Car Rental</span>
+        <button mat-raised-button color="accent" (click)="createNewCar()">
+            New Car
+        </button>
+    </div>
+</mat-toolbar>
+<app-rental-list [cars]="cars">
+</app-rental-list>

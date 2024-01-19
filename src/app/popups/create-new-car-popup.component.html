@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Create new Car</h2>
+<mat-dialog-content>
+    <form [formGroup]="formGroup">
+        <div class="form-container">
+            <mat-form-field>
+                <mat-label>Name of car</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Type of car</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option *ngFor="let type of typeOfCars" [value]="type">{{type}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Gear-Shift</mat-label>
+                <mat-select formControlName="transmission">
+                    <mat-option *ngFor="let gear of gearShifts" [value]="gear">{{gear}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Cost per Day</mat-label>
+                <input matInput formControlName="costPerDay" type="number">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Seats</mat-label>
+                <input matInput formControlName="seats" type="number">
+            </mat-form-field>
+            <div class="upload-file">
+                <input #imageUpload hidden="true" type="file" onclick="this.value.null" (change)="fileUpload($event)"
+                       accept="image/png"/>
+                <button mat-flat-button color="primary" [disabled]="imageHasUploaded" (click)="imageUpload.click()">Upload car image</button>
+                <mat-hint *ngIf="imageHasUploaded">Image has been uploaded</mat-hint>
+            </div>
+        </div>
+        <div class="button-container">
+            <button mat-raised-button [mat-dialog-close]="null">Cancel</button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="formGroup" [disabled]="formGroup.invalid">
+                Submit
+            </button>
+        </div>
+    </form>
+</mat-dialog-content>

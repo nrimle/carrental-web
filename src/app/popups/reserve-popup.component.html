@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>Reserve car</h2>
+<mat-dialog-content>
+    <form [formGroup]="formGroup">
+        <span>Reservation Period</span>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="formGroup" [rangePicker]="picker" [min]="minDate" [max]="maxDate" [dateFilter]="reservedFilter">
+              <input matStartDate formControlName="startRental" placeholder="Start date" (dateChange)="updateMaxDate()">
+              <input matEndDate formControlName="endRental" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
+        <span>Customer-Information</span>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="birthPicker" [max]="maxDateOfBirth" formControlName="dateOfBirth">
+                <mat-datepicker-toggle matIconSuffix [for]="birthPicker"></mat-datepicker-toggle>
+                <mat-datepicker startView="multi-year" [startAt]="birthStartDate"
+                                #birthPicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Street</mat-label>
+                <input matInput formControlName="bStreet">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>House-Number</mat-label>
+                <input matInput formControlName="bHouseNumber">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Zip-Code</mat-label>
+                <input matInput formControlName="bZipCode">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input matInput formControlName="bCity">
+            </mat-form-field>
+        </div>
+        <div class="row action-row">
+            <button mat-raised-button [mat-dialog-close]="null">Cancel</button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="formGroup" [disabled]="formGroup.invalid">
+                Submit
+            </button>
+        </div>
+    </form>
+</mat-dialog-content>
