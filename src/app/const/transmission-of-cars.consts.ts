@@ -1,1 +1,1 @@
-export const TRANSMISSIONOFCARS : Array<string> = ["automatic", "manual"];
+export const TRANSMISSIONOFCARS : Array<string> = ["AUTOMATIC", "MANUAL"];
